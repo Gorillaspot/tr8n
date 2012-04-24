@@ -107,7 +107,7 @@ class Tr8n::LanguageCaseRule < ActiveRecord::Base
     end    
   
     result1 = evaluate_part(value, 1)
-    if definition["multipart"] == "true"
+    if definition["multipart"] == "true" and definition["operator"]
       result2 = evaluate_part(value, 2)
       return false if definition["operator"] == "and" and !(result1 and result2)
       return false if definition["operator"] == "or"  and !(result1 or result2)
@@ -197,7 +197,7 @@ class Tr8n::LanguageCaseRule < ActiveRecord::Base
     desc << " token value"
     desc << describe_part(1)
   
-    if ["true", true].include?(definition["multipart"])
+    if ["true", true].include?(definition["multipart"]) and definition["operator"]
       desc << " " << definition["operator"]
       desc << describe_part(2)
     end

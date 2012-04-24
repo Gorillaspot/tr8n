@@ -1,6 +1,9 @@
 # https://developers.google.com/closure/compiler/
 # http://developer.yahoo.com/yui/compressor
 
+if __FILE__ == $0
+
+require 'rubygems'
 require 'pp'
 require 'yaml'
 require 'fssm'
@@ -30,8 +33,10 @@ FSSM.monitor('./src/', '**/*') do
   def compile
     command = "java -jar compressors/google/compiler.jar --js #{config['all']} --js_output_file ../assets/javascripts/tr8n/tr8n-compiled.js; echo 'Done'"
     pp command
-    Kernel.spawn(command)
+    `#{command}`
   end
 
+  compile
 end
 
+end

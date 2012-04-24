@@ -378,7 +378,7 @@ module Tr8n
     end
 
     def self.multiple_base_languages?
-      'en-US' == default_locale
+      'en-CP' == default_locale
     end
 
     def self.default_url

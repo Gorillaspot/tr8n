@@ -56,7 +56,6 @@ var Tr8n = Tr8n || {
 
     var elements = msg.split(':');
     if (elements[0] != 'tr8n') {
-      alert("Received an unkown message: " + msg);
       return;
     }
 
