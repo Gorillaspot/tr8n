@@ -62,7 +62,7 @@ class Tr8n::TotalLanguageMetric < Tr8n::LanguageMetric
         :joins => "join tr8n_translations on tr8n_translation_keys.id = tr8n_translations.translation_key_id") 
     save
 
-    language.update_attributes(:completeness => calculate_language_completeness)
+    language.update_attribute(:completeness, calculate_language_completeness)
     
     self
   end

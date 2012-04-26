@@ -71,7 +71,7 @@ module Tr8n
 
       def tr8n_init_current_locale
         eval(Tr8n::Config.current_locale_method)
-      rescue
+      rescue => e
         # fallback to the default session based locale implementation
         # choose the first language from the accepted languages header
         session[:locale] = tr8n_user_preffered_locale unless session[:locale]
@@ -95,7 +95,7 @@ module Tr8n
       def init_tr8n
         # initialize request thread variables
         Tr8n::Config.init(tr8n_init_current_locale, tr8n_init_current_user, tr8n_init_current_source)
-        
+       
         # invalidate source for the current page
         Tr8n::Cache.invalidate_source(Tr8n::Config.current_source)
 
